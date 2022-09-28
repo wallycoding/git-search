@@ -1,20 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React, { useEffect } from "react";
+import Header from "./src/components/Header";
+import Topics from "./src/components/Topics";
+import SearchProvider from "./src/providers/SearchProvider";
+import TopicsProvider from "./src/providers/TopicProvider";
+import { Wrapper } from "./styles";
 
 export default function App() {
+  useEffect(() => {}, []);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Wrapper>
+      <SearchProvider>
+        <TopicsProvider>
+          <Header />
+          <Topics />
+        </TopicsProvider>
+      </SearchProvider>
+      <StatusBar style="auto" translucent={false} />
+    </Wrapper>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
